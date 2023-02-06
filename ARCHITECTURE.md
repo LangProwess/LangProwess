@@ -40,7 +40,7 @@ server
 
 ## Shared
 
-Shared elements between different codebases.
+Shared elements between different codebases e.g. DTOs (view models).
 
 [Codebase](src/LangProwess.Shared/)
 
