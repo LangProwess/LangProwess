@@ -1,0 +1,5 @@
+# Generated from .razor.scss files
+wwwroot/css/*.css
+wwwroot/css/*.css.map
+**/*.razor.css
+**/*.razor.css.map

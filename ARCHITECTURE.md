@@ -8,15 +8,16 @@ The Project utilizes C# as the main programming language, restraining from using
 ```
 Framework: Blazor
 Component framework: MudBlazor
-Languages: C#, HTML5, CSS
+Languages: C#, HTML5, SCSS
 ```
 
-As for CSS, we are using the isolation method.
+We are using Blazor's CSS isolation.
 
 ```
 web
 ├── pages             - displayable pages
 ├── shared            - shared components and layouts
+├── styles            - shared stylesheets
 ```
 
 [Codebase](src/LangProwess.Web/)
