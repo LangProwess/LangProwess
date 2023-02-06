@@ -4,6 +4,8 @@ using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSystemd();
+
 builder.Services.AddOptions();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
