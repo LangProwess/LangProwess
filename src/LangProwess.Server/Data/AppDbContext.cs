@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LangProwess;
+namespace LangProwess.Server.Data;
 
 class AppDbContext : DbContext
 {
@@ -12,4 +12,9 @@ class AppDbContext : DbContext
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		=> optionsBuilder.UseSqlite($"Data Source={DbPath}");
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		UserEntity.OnEntityBuilding(modelBuilder.Entity<UserEntity>());
+	}
 }
