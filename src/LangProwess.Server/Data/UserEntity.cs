@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LangProwess.Server.Data;
@@ -5,11 +6,13 @@ namespace LangProwess.Server.Data;
 class UserEntity
 {
 	public int Id { get; init; }
-	public Guid PublicId { get; init; }
+	public Guid PublicId { get; init; } = Guid.NewGuid();
 	public string? Username { get; set; }
 	public required string Email { get; set; }
 	public DateTimeOffset CreatedAt { get; init; }
 	public DateTimeOffset UpdatedAt { get; init; }
+
+	public required List<SetEntity> Sets { get; init; }
 
 	public static void OnEntityBuilding(EntityTypeBuilder<UserEntity> builder)
 	{

@@ -1,4 +1,5 @@
 using System.Reflection;
+using LangProwess.Server.Data;
 using LangProwess.Web.Infrastructure;
 using MediatR;
 
@@ -13,6 +14,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//builder.Services.AddSingleton()
 
 var app = builder.Build();
 
