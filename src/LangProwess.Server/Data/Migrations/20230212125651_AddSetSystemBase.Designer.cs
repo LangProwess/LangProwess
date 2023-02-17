@@ -3,6 +3,7 @@ using System;
 using LangProwess.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,32 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LangProwess.Server.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230212125651_AddSetSystemBase")]
+    partial class AddSetSystemBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
-
-            modelBuilder.Entity("LangProwess.Server.Data.AnswerEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DefinitionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DefinitionId");
-
-                    b.ToTable("Answers");
-                });
 
             modelBuilder.Entity("LangProwess.Server.Data.SetEntity", b =>
                 {
@@ -46,18 +29,16 @@ namespace LangProwess.Server.Data.Migrations
                     b.Property<int>("Access")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AnswersLanguage")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DefinitionLanguage")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("LastWordIndex")
+                    b.Property<int>("MaxLength")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -73,22 +54,49 @@ namespace LangProwess.Server.Data.Migrations
                     b.Property<Guid>("PublicId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("State")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.HasIndex("OwnerId");
 
-                    b.HasIndex("PublicId")
-                        .IsUnique();
+                    b.ToTable("SetEntity");
+                });
 
-                    b.ToTable("Sets");
+            modelBuilder.Entity("LangProwess.Server.Data.TermEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DefinitionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MaxLength")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DefinitionId");
+
+                    b.ToTable("TermEntity");
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.UserEntity", b =>
@@ -105,6 +113,9 @@ namespace LangProwess.Server.Data.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("MaxLength")
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("PublicId")
                         .HasColumnType("TEXT");
@@ -125,7 +136,7 @@ namespace LangProwess.Server.Data.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("UserEntity");
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.WordEntity", b =>
@@ -135,19 +146,17 @@ namespace LangProwess.Server.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Definition")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("MaxLength")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Progress")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Pronounciation")
                         .HasColumnType("TEXT");
@@ -159,31 +168,16 @@ namespace LangProwess.Server.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
-
-                    b.HasIndex("PublicId")
-                        .IsUnique();
-
                     b.HasIndex("SetId");
 
-                    b.ToTable("Words");
-                });
-
-            modelBuilder.Entity("LangProwess.Server.Data.AnswerEntity", b =>
-                {
-                    b.HasOne("LangProwess.Server.Data.WordEntity", "Definition")
-                        .WithMany("Answers")
-                        .HasForeignKey("DefinitionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Definition");
+                    b.ToTable("WordEntity");
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.SetEntity", b =>
@@ -195,6 +189,17 @@ namespace LangProwess.Server.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("LangProwess.Server.Data.TermEntity", b =>
+                {
+                    b.HasOne("LangProwess.Server.Data.WordEntity", "Definition")
+                        .WithMany("Terms")
+                        .HasForeignKey("DefinitionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Definition");
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.WordEntity", b =>
@@ -220,7 +225,7 @@ namespace LangProwess.Server.Data.Migrations
 
             modelBuilder.Entity("LangProwess.Server.Data.WordEntity", b =>
                 {
-                    b.Navigation("Answers");
+                    b.Navigation("Terms");
                 });
 #pragma warning restore 612, 618
         }
