@@ -14,7 +14,7 @@ class SetEntity
 	public Language AnswersLanguage { get; set; } = Language.SelectLanguage;
 	public DateTime CreatedAt { get; init; }
 	public DateTime UpdatedAt { get; init; }
-	public Access Access { get; set; } = Access.Personal;
+	public SetAccess Access { get; set; } = SetAccess.Personal;
 
 	public required List<WordEntity> Words { get; set; }
 	public required UserEntity Owner { get; init; }
