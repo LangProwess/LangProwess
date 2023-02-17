@@ -31,7 +31,7 @@ class WordEntity
 	}
 }
 
-public enum Progress
+enum Progress
 {
 	ToLearn = 0,
 	Learning = 1,
