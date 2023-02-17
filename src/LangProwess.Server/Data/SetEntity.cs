@@ -35,7 +35,7 @@ class SetEntity
 	}
 }
 
-public enum Access
+enum SetAccess
 {
 	Personal = 0,	// self only
 	LinkOnly = 1,	// link only
