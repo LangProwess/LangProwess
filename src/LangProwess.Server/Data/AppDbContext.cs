@@ -17,11 +17,12 @@ class AppDbContext : DbContext
 	{
 		UserEntity.OnEntityBuilding(modelBuilder.Entity<UserEntity>());
 		SetEntity.OnEntityBuilding(modelBuilder.Entity<SetEntity>());
-		WordEntity.OnEntityBuilding(modelBuilder.Entity<WordEntity>());
+		TermEntity.OnEntityBuilding(modelBuilder.Entity<TermEntity>());
 	}
 
 	public DbSet<UserEntity> Users => Set<UserEntity>();
 	public DbSet<SetEntity> Sets => Set<SetEntity>();
-	public DbSet<WordEntity> Words => Set<WordEntity>();
+	public DbSet<TermEntity> Terms => Set<TermEntity>();
+	public DbSet<QueryEntity> Queries => Set<QueryEntity>();
 	public DbSet<AnswerEntity> Answers => Set<AnswerEntity>();
 }

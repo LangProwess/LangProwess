@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LangProwess.Server.Data;
 
-class AnswerEntity
+class QueryEntity
 {
 	public int Id { get; init; }
 	public required string Name { get; init; }
