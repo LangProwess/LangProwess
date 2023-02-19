@@ -12,8 +12,8 @@ class SetEntity
 	public int? LastWordIndex { get; set; } 
 	public Language QueriesLanguage { get; set; } = Language.SelectLanguage;
 	public Language AnswersLanguage { get; set; } = Language.SelectLanguage;
-	public DateTime CreatedAt { get; init; }
-	public DateTime UpdatedAt { get; init; }
+	public DateTimeOffset CreatedAt { get; init; }
+	public DateTimeOffset UpdatedAt { get; init; }
 	public SetAccess Access { get; set; } = SetAccess.Personal;
 
 	public required List<TermEntity> Terms { get; set; }

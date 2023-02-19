@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LangProwess.Server.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230219144703_AddSetSymetry")]
+    [Migration("20230219145936_AddSetSymetry")]
     partial class AddSetSymetry
     {
         /// <inheritdoc />
@@ -72,7 +72,7 @@ namespace LangProwess.Server.Data.Migrations
                     b.Property<int>("AnswersLanguage")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -96,7 +96,7 @@ namespace LangProwess.Server.Data.Migrations
                     b.Property<int>("QueriesLanguage")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTimeOffset>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("TEXT")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
