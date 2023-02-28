@@ -10,11 +10,13 @@ builder.Host.UseSystemd();
 builder.Services.AddOptions();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<AppDbContext>();
 
 var app = builder.Build();
 

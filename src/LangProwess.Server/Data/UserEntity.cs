@@ -12,7 +12,7 @@ class UserEntity
 	public DateTimeOffset CreatedAt { get; init; }
 	public DateTimeOffset UpdatedAt { get; init; }
 
-	public required List<SetEntity> Sets { get; init; }
+	public List<SetEntity> Sets { get; init; } = new List<SetEntity>();
 
 	public static void OnEntityBuilding(EntityTypeBuilder<UserEntity> builder)
 	{
