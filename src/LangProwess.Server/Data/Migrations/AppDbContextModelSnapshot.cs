@@ -34,7 +34,7 @@ namespace LangProwess.Server.Data.Migrations
 
                     b.HasIndex("ParentTermId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("Answers", (string)null);
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.QueryEntity", b =>
@@ -54,7 +54,7 @@ namespace LangProwess.Server.Data.Migrations
 
                     b.HasIndex("ParentTermId");
 
-                    b.ToTable("Queries");
+                    b.ToTable("Queries", (string)null);
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.SetEntity", b =>
@@ -108,7 +108,7 @@ namespace LangProwess.Server.Data.Migrations
                     b.HasIndex("PublicId")
                         .IsUnique();
 
-                    b.ToTable("Sets");
+                    b.ToTable("Sets", (string)null);
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.TermEntity", b =>
@@ -149,7 +149,7 @@ namespace LangProwess.Server.Data.Migrations
 
                     b.HasIndex("SetId");
 
-                    b.ToTable("Terms");
+                    b.ToTable("Terms", (string)null);
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.UserEntity", b =>
@@ -186,7 +186,7 @@ namespace LangProwess.Server.Data.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("LangProwess.Server.Data.AnswerEntity", b =>

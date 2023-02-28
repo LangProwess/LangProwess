@@ -16,7 +16,7 @@ class SetEntity
 	public DateTimeOffset UpdatedAt { get; init; }
 	public SetAccess Access { get; set; } = SetAccess.Personal;
 
-	public required List<TermEntity> Terms { get; set; }
+	public List<TermEntity> Terms { get; set; } = new List<TermEntity>();
 	public required UserEntity Owner { get; init; }
 
 	public static void OnEntityBuilding(EntityTypeBuilder<SetEntity> builder)
@@ -33,11 +33,4 @@ class SetEntity
 		builder.Property(x => x.UpdatedAt)
 			.UpdateTimestamp();
 	}
-}
-
-enum SetAccess
-{
-	Personal = 0,	// self only
-	LinkOnly = 1,	// link only
-	Global = 2 		// public
 }
