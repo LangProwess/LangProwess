@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LangProwess.Server.Features.Users;
 
-static class UpdateUserById
+static class PutUserById
 {
 	public record Command(Guid Id, User User) : IRequest<bool>;
 
