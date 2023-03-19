@@ -44,14 +44,14 @@ public class UserController : ControllerBase
 	}
 
 	[HttpPut("{id}")]
-	public async Task<ActionResult> UpdateUserById(Guid id, [FromBody] User user)
+	public async Task<ActionResult> PutUserById(Guid id, [FromBody] User user)
 	{
 		if (user.Email == null)
 		{
 			return BadRequest("Email undefined");
 		}
 
-		bool updated = await mediator.Send(new UpdateUserById.Command(id, user));
+		bool updated = await mediator.Send(new PutUserById.Command(id, user));
 		return updated ? Ok() : NotFound();
 	}
 
